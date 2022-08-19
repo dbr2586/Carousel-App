@@ -177,4 +177,8 @@ h1 {
      .carousel .carousel-item img, .empty-div {
         width: 95vw;      
     }
+    .carousel .carousel-actions {
+        width: 95vw;
 }
+#counter {
+    width: 95vw;}}
