@@ -1,0 +1,174 @@
+/*
+    Smooth transitions
+    - When a new slide appears that has the class name 'carousel-item-visible' we want to trigger an animation...
+    
+    1) Create a new '@keyframes' at the bottom of this file called 'fadeVisibility' - kind of like a JS function! '@keyframes fadeVisibility {}'
+    2) Keyframes work in steps, so 0-100 on a range. Each step you supply changes the animation sequence, e.g. 0% could be hidden and have an opacity of 0, and 100% could be showing the item by having an opacity of 1
+    3) Our first keyframe step would be '0%' which sets the opacity to 0, remember that '0%' on our sequence step is not like a regular property/values, you have to use curly braces and then set your values inside there!
+    4) Our second keyframe step within 'fadeVisibility' would be '100%', which sets the opacity to 1
+    5) Add this keyframe animation to 'carousel-item-visible' by using the property 'animation' and pass our keyframes, those keyframes being 'fadeVisibility'
+    7) Lastly after we have added our property and value to 'carousel-item-visible', we need to pass a time value (i'm going to be using seconds), so after 'animation: fadeVisibility' pass a time value. I'm going to use 0.5s - which should look like this: 'animation: fadeVisibility 0.5s'
+    
+    Info: So from 0% - 100% in our keyframes we wait 0.5 seconds and go from an opacity of 0, to an opacity of 1!
+    
+    More info: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
+*/
+
+body{
+    background: url(https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80);
+    background-size: auto; 
+    background-repeat: no-repeat;
+    display: flex; 
+    flex-flow: column wrap;
+    align-items: center; 
+    
+}
+
+h1 {
+    position: absolute; 
+    text-align: center;  
+    width: 100%; 
+    margin-top: 150px;  
+    font-size: 4em; 
+    color: lightskyblue;
+    text-shadow: 0 0 3px black;
+}
+.carousel {
+    margin: 30px auto 0 auto; 
+    max-width: 600px;
+    position: relative;
+}
+
+.carousel .carousel-item,
+.carousel .carousel-item-hidden {
+    display: none;
+}
+
+.carousel .carousel-item-visible {
+    display: block;
+    animation: fadeVisibility .7s;
+}
+
+.carousel .carousel-item img, .empty-div {
+    border-radius: 10px; 
+    width: 40vw;
+    min-width: 400px; 
+    height: 80vh; 
+    object-fit: cover; 
+    box-shadow: 10px 10px 8px #888888;
+  
+}
+
+.empty-div {
+    border: 1px solid gray; 
+    color: crimson; 
+    font-weight: 700;
+    font-family: Courier New, Courier, monospace; 
+    font-size: 2em; 
+}
+
+.carousel .carousel-actions {
+    display: flex;
+    width: 40vw;
+    min-width: 400px;  
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-100%);
+}
+
+.carousel .carousel-actions button {
+    border-radius: 50px;
+    background: rgba(250, 250, 250, .5);
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.carousel .carousel-actions button:hover{
+ background: rgba(100, 1, 1, .5);}
+
+#counter {
+    width: 40vw;
+    min-width: 400px; 
+    text-align: center; 
+    margin-top: -50px;
+     
+}
+
+.dot {
+    font-size: 5em; 
+}
+
+.dot.dark {
+    color: black
+}
+
+.dot.light {
+    color: pink
+}
+
+.carousel .carousel-actions button#carousel-button-prev {
+    margin-left: 20px;
+}
+
+.carousel .carousel-actions button#carousel-button-next {
+    margin-right: 20px;   
+}
+
+#input-container{
+    margin: auto; 
+    width: 80vw; 
+    display: flex;
+    justify-content: center; 
+}
+
+#image-url-input{
+    border-radius: 5px; 
+    width: 65%;
+    margin-right: 5px; 
+}
+
+#submit-image-button{
+    border: none; 
+    border-radius: 5px; 
+     width: 120px;
+      height: 30px;
+    background: lightcyan; 
+    cursor: pointer; 
+}
+
+#submit-image-button:hover{
+    background: lightblue; 
+    cursor: pointer; 
+}
+
+#delete-button{
+    border: none; 
+    border-radius: 5px; 
+    font-size: 1em; 
+    margin-right: 5px; 
+    width: 120px; 
+    height: 30px;
+    background: lightcoral;
+    cursor: poitner; 
+}
+
+#delete-button:hover{
+    background: darkred
+}
+
+
+
+@keyframes fadeVisibility {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
